@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:match*",
-      "destination": "https://uc26sps4i9.execute-api.us-west-2.amazonaws.com/test/:match*"
+      "destination": "https://uc26sps4i9.execute-api.us-west-2.amazonaws.com/test/api/:match*"
     }
   ]
 }
