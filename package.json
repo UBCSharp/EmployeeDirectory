@@ -1,10 +1,10 @@
 {
   "scripts": {
     "start": "concurrently 'yarn start:server' 'yarn start:web'",
-    "start:server": "dotnet run --project src/server",
+    "start:server": "cd server && dotnet watch run",
     "start:web": "concurrently 'yarn build --watch' 'node devserver'",
     "build": "snowpack build",
-    "build:server": "cd src/server && dotnet build && dotnet publish -c release",
+    "build:server": "cd server && dotnet build && dotnet publish -c release",
     "test": "echo \"This template does not include a test runner by default.\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

@@ -52,7 +52,7 @@ resource "aws_db_instance" "employee_database" {
 
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_dir  = "src/server/bin/release/netcoreapp3.1/publish"
+  source_dir  = "server/bin/release/netcoreapp3.1/publish"
   output_path = "lambda.zip"
   depends_on  = [null_resource.build_dotnet]
 }
