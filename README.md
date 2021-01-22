@@ -18,25 +18,21 @@
 1. Install the .NET SDK from the above website.
    https://dotnet.microsoft.com/download/dotnet-core/3.1
 
-2. Install Terraform
+2. Install C# in VSCode
 
-### Mac Setup:
 
-`brew install tfenv`
-`tfenv install latest`
-`tfenv use latest`
+## DevOps:
 
-### Windows Setup:
+1. Install Terraform
+   `brew install tfenv`
+   `tfenv install latest`
+   `tfenv use latest`
 
-idk
-
-3. Install C# and Terraform extensions in VSCode
-
-4. Install AWS CLI from https://aws.amazon.com/cli/
+2. Install AWS CLI from https://aws.amazon.com/cli/
    To configure aws:
    `aws configure`
    Get the details from https://cpsc319-hq.slack.com/archives/C01JPCAGLSW/p1610772100000400
 
-5. To publish the function
+3. To publish the function
    `terraform apply`
    If you're using terraform for the first time, also run `terraform init`
