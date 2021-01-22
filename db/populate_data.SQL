@@ -201,19 +201,19 @@ INSERT INTO Employee (EmployeeNumber, CompanyCode, OfficeCode, GroupCode, LastNa
               VALUES ('39123', '03', '03', '04', 'TermEmployee03', 'Name', 'Salary', 'Some title', '2017-01-01', '2020-06-01',
                       '30023', 0, 'something@acme.ca', '604-555-5555', '604-555-5555', 'LDFS8F3DDS', 'some-url/photo_default.jpg');
 
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30015', '2', '2');
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30015', '3', '1');
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30015', '3', '3');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30015', '2', '2', 'Novice');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30015', '3', '1', 'Intermediate');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30015', '3', '3', 'Novice');
 
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('10105', '2', '1');
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('10105', '2', '2');
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('10105', '2', '3');
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('10105', '3', '2');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('10105', '2', '1', 'Intermediate');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('10105', '2', '2', 'Intermediate');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('10105', '2', '3', 'Intermediate');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('10105', '3', '2', 'Expert');
 
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('20004', '4', '1');
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('20004', '4', '2');
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('20004', '3', '1');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('20004', '4', '1', 'Intermediate');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('20004', '4', '2', 'Expert');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('20004', '3', '1', 'Intermediate');
 
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30125', '1', '2');
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30125', '1', '3');
-INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30125', '1', '5');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30125', '1', '2', 'Intermediate');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30125', '1', '3', 'Novice');
+INSERT INTO EmployeeSkills (EmployeeNumber, SkillCategoryId, SkillId) VALUES ('30125', '1', '5', 'Expert');

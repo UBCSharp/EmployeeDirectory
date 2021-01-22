@@ -21,7 +21,9 @@ CONSTRAINT pkLocationOffice PRIMARY KEY
     (
         CompanyCode,
         OfficeCode
-    ));
+    ),
+CONSTRAINT fkCompanyOffice FOREIGN KEY (CompanyCode) 
+REFERENCES LocationCompany(CompanyCode));
 
 /****************************************************************/
 
@@ -37,7 +39,9 @@ CONSTRAINT pkLocationGroup PRIMARY KEY
         CompanyCode,
         OfficeCode,
         GroupCode
-    ));
+    ),
+CONSTRAINT fkOfficeGroup FOREIGN KEY (CompanyCode, OfficeCode) 
+REFERENCES LocationOffice(CompanyCode, OfficeCode));
 
 /****************************************************************/
 
@@ -75,7 +79,9 @@ CONSTRAINT pkSkill PRIMARY KEY
     (
         SkillCategoryId,
         SkillId
-    ));
+    ),
+CONSTRAINT fkSkillCategorySkill FOREIGN KEY (SkillCategoryId) 
+REFERENCES SkillCategory(SkillCategoryId));
 
 /****************************************************************/
 
@@ -101,7 +107,13 @@ CREATE TABLE Employee
 CONSTRAINT pkEmployee PRIMARY KEY
     (
         EmployeeNumber
-    ));
+    ),
+CONSTRAINT fkGroupEmployee FOREIGN KEY (CompanyCode, OfficeCode, GroupCode) 
+REFERENCES LocationGroup(CompanyCode, OfficeCode, GroupCode),
+CONSTRAINT fkSupervisorEmployee FOREIGN KEY (SupervisorEmployeeNumber) 
+REFERENCES Employee(EmployeeNumber),
+CONSTRAINT fkPhysicalLocationEmployee FOREIGN KEY (PhysicalLocationId) 
+REFERENCES LocationPhysical(PhysicalLocationId));
 
 /****************************************************************/
 
@@ -110,9 +122,14 @@ CREATE TABLE EmployeeSkills
         EmployeeNumber                 VARCHAR(10)   NOT NULL,
         SkillCategoryId                VARCHAR(32)   NOT NULL,
         SkillId                        VARCHAR(32)   NOT NULL,
+        SkillLevel                     VARCHAR(12),
 CONSTRAINT pkEmployeeSkills PRIMARY KEY
     (
         EmployeeNumber,
         SkillCategoryId,
         SkillId
-    ));
+    ),
+CONSTRAINT fkEmployeeEmployeeSkills FOREIGN KEY (EmployeeNumber) 
+REFERENCES Employee(EmployeeNumber),
+CONSTRAINT fkSkillEmployeeSkills FOREIGN KEY (SkillId) 
+REFERENCES Skill(SkillCategoryId, SkillId));
