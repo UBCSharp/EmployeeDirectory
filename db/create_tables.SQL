@@ -7,7 +7,9 @@ CREATE TABLE LocationCompany
 CONSTRAINT pkLocationCompany PRIMARY KEY
     (
         CompanyCode
-    ));
+    ),
+CONSTRAINT fkCompanyManager FOREIGN KEY (ManagerEmployeeNumber) 
+REFERENCES Employee(EmployeeNumber));
 
 /****************************************************************/
 
@@ -23,7 +25,9 @@ CONSTRAINT pkLocationOffice PRIMARY KEY
         OfficeCode
     ),
 CONSTRAINT fkCompanyOffice FOREIGN KEY (CompanyCode) 
-REFERENCES LocationCompany(CompanyCode));
+REFERENCES LocationCompany(CompanyCode),
+CONSTRAINT fkOfficeManager FOREIGN KEY (ManagerEmployeeNumber) 
+REFERENCES Employee(EmployeeNumber));
 
 /****************************************************************/
 
@@ -41,7 +45,11 @@ CONSTRAINT pkLocationGroup PRIMARY KEY
         GroupCode
     ),
 CONSTRAINT fkOfficeGroup FOREIGN KEY (CompanyCode, OfficeCode) 
-REFERENCES LocationOffice(CompanyCode, OfficeCode));
+REFERENCES LocationOffice(CompanyCode, OfficeCode),
+CONSTRAINT FK_Company FOREIGN KEY (CompanyCode) 
+REFERENCES LocationCompany(CompanyCode),
+CONSTRAINT fkGroupManager FOREIGN KEY (ManagerEmployeeNumber) 
+REFERENCES Employee(EmployeeNumber));
 
 /****************************************************************/
 
@@ -110,6 +118,10 @@ CONSTRAINT pkEmployee PRIMARY KEY
     ),
 CONSTRAINT fkGroupEmployee FOREIGN KEY (CompanyCode, OfficeCode, GroupCode) 
 REFERENCES LocationGroup(CompanyCode, OfficeCode, GroupCode),
+CONSTRAINT fkOfficeEmployee FOREIGN KEY (CompanyCode, OfficeCode) 
+REFERENCES LocationOffice(CompanyCode, OfficeCode),
+CONSTRAINT fkCompanyEmployee FOREIGN KEY (CompanyCode) 
+REFERENCES LocationCompany(CompanyCode),
 CONSTRAINT fkSupervisorEmployee FOREIGN KEY (SupervisorEmployeeNumber) 
 REFERENCES Employee(EmployeeNumber),
 CONSTRAINT fkPhysicalLocationEmployee FOREIGN KEY (PhysicalLocationId) 
@@ -117,7 +129,7 @@ REFERENCES LocationPhysical(PhysicalLocationId));
 
 /****************************************************************/
 
-CREATE TABLE EmployeeSkills
+CREATE TABLE EmployeeSkill
     (
         EmployeeNumber                 VARCHAR(10)   NOT NULL,
         SkillCategoryId                VARCHAR(32)   NOT NULL,
@@ -129,7 +141,9 @@ CONSTRAINT pkEmployeeSkills PRIMARY KEY
         SkillCategoryId,
         SkillId
     ),
-CONSTRAINT fkEmployeeEmployeeSkills FOREIGN KEY (EmployeeNumber) 
+CONSTRAINT fkEmployeeEmployeeSkill FOREIGN KEY (EmployeeNumber) 
 REFERENCES Employee(EmployeeNumber),
-CONSTRAINT fkSkillEmployeeSkills FOREIGN KEY (SkillId) 
-REFERENCES Skill(SkillCategoryId, SkillId));
+CONSTRAINT fkSkillEmployeeSkill FOREIGN KEY (SkillCategoryId, SkillId) 
+REFERENCES Skill(SkillCategoryId, SkillId),
+CONSTRAINT fkSkillCategory FOREIGN KEY (SkillCategoryId) 
+REFERENCES SkillCategory(SkillCategoryId));
