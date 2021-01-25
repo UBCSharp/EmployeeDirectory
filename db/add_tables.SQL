@@ -78,19 +78,12 @@ CONSTRAINT pkSkill PRIMARY KEY
 
 /****************************************************************/
 
-CREATE TABLE Employee
+CREATE TABLE Worker
     (
-        EmployeeNumber                 VARCHAR(10)   NOT NULL,
-        CompanyCode                    VARCHAR(2)    NOT NULL,
-        OfficeCode                     VARCHAR(2)    NOT NULL,
-        GroupCode                      VARCHAR(2)    NOT NULL,
+        WorkerNumber                   VARCHAR(10)   NOT NULL,
         LastName                       VARCHAR(50),
         FirstName                      VARCHAR(25),
-        EmploymentType                 VARCHAR(10),
         Title                          VARCHAR(50),
-        HireDate                       DATE,
-        TerminationDate                DATE,
-        SupervisorEmployeeNumber       VARCHAR(10)   NOT NULL,
         YearsPriorExperience           NUMERIC(3,1),
         Email                          VARCHAR(50),
         WorkPhone                      VARCHAR(24),
@@ -99,20 +92,51 @@ CREATE TABLE Employee
         PhotoUrl                       VARCHAR(255)
 CONSTRAINT pkEmployee PRIMARY KEY
     (
+        WorkerNumber
+    ));
+
+/****************************************************************/
+
+CREATE TABLE Employee
+    (
+        EmployeeNumber                 VARCHAR(10)   NOT NULL,
+        CompanyCode                    VARCHAR(2)    NOT NULL,
+        OfficeCode                     VARCHAR(2)    NOT NULL,
+        GroupCode                      VARCHAR(2)    NOT NULL,
+        EmploymentType                 VARCHAR(10),
+        HireDate                       DATE,
+        TerminationDate                DATE,
+        SupervisorEmployeeNumber       VARCHAR(10)   NOT NULL,
+CONSTRAINT pkEmployee PRIMARY KEY
+    (
         EmployeeNumber
     ));
 
 /****************************************************************/
 
-CREATE TABLE EmployeeSkill
+CREATE TABLE Contractor
     (
-        EmployeeNumber                 VARCHAR(10)   NOT NULL,
+        ContractorNumber               VARCHAR(10)   NOT NULL,
+        Organization                   VARCHAR(20),
+        EmploymentType                 VARCHAR(10),
+        FirstContactDate               DATE,
+        LastContactDate                DATE,
+CONSTRAINT pkEmployee PRIMARY KEY
+    (
+        ContractorNumber
+    ));
+
+/****************************************************************/
+
+CREATE TABLE WorkerSkill
+    (
+        WorkerNumber                   VARCHAR(10)   NOT NULL,
         SkillCategoryId                VARCHAR(32)   NOT NULL,
         SkillId                        VARCHAR(32)   NOT NULL,
         SkillLevel                     VARCHAR(12)   NOT NULL CHECK (SkillLevel IN('novice', 'intermediate', 'expert')),
-CONSTRAINT pkEmployeeSkill PRIMARY KEY
+CONSTRAINT pkWorkerSkill PRIMARY KEY
     (
-        EmployeeNumber,
+        WorkerNumber,
         SkillCategoryId,
         SkillId
     ));
