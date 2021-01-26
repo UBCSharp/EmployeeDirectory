@@ -7,4 +7,4 @@ DROP TABLE Skill;
 DROP TABLE Employee;
 DROP TABLE Contractor;
 DROP TABLE Worker;
-DROP TABLE EmployeeSkill;
+DROP TABLE WorkerSkill;
