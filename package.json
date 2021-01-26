@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "start": "concurrently 'yarn start:server' 'yarn start:web'",
+    "start": "concurrently \"yarn start:server\" \"yarn start:web\"",
     "start:server": "cd server && dotnet watch run",
-    "start:web": "concurrently 'yarn build --watch' 'node devserver'",
+    "start:web": "concurrently \"yarn build --watch\" \"node devserver\"",
     "build": "snowpack build",
     "build:server": "cd server && dotnet build && dotnet publish -c release",
     "test": "echo \"This template does not include a test runner by default.\" && exit 1",

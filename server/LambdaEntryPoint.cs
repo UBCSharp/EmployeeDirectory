@@ -2,7 +2,10 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using server.Services;
 
 namespace server
 {
@@ -47,6 +50,29 @@ namespace server
         /// <param name="builder"></param>
         protected override void Init(IHostBuilder builder)
         {
+            var host = builder.Build();
+
+            InitializeServicesAsync(host); 
+        }
+
+        private async Task InitializeServicesAsync(IHost host)
+        {
+            using var serviceScope = host.Services.CreateScope();
+            var services = serviceScope.ServiceProvider;
+
+            try
+            {
+                var dbConnService = services.GetRequiredService<IDataConnectionService>();
+                await dbConnService.InitDbConnectionAsync();
+                var logger = services.GetRequiredService<ILogger<LambdaEntryPoint>>();
+                logger.LogInformation("Connected the DB!");
+                logger.LogInformation($"Database: {dbConnService.CurrentDatabase()}");
+            }
+            catch (Exception ex)
+            {
+                var logger = services.GetRequiredService<ILogger<LambdaEntryPoint>>();
+                logger.LogError(ex, "Could not connect to DB.");
+            }
         }
     }
 }
