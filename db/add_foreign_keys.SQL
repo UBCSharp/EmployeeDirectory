@@ -26,14 +26,6 @@ ALTER TABLE Skill
 ADD CONSTRAINT fkSkillCategorySkill
 FOREIGN KEY (SkillCategoryId) REFERENCES SkillCategory(SkillCategoryId);
 
-ALTER TABLE Worker
-ADD CONSTRAINT fkLocationPhysicalWorker
-FOREIGN KEY (PhysicalLocationId) REFERENCES LocationPhysical(PhysicalLocationId);
-
-ALTER TABLE Employee
-ADD CONSTRAINT fkWorkerEmployee
-FOREIGN KEY (EmployeeNumber) REFERENCES Worker(WorkerNumber);
-
 ALTER TABLE Employee
 ADD CONSTRAINT fkGroupEmployee
 FOREIGN KEY (CompanyCode, OfficeCode, GroupCode) REFERENCES LocationGroup(CompanyCode, OfficeCode, GroupCode);
@@ -50,18 +42,18 @@ ALTER TABLE Employee
 ADD CONSTRAINT fkSupervisorEmployee
 FOREIGN KEY (SupervisorEmployeeNumber) REFERENCES Employee(EmployeeNumber);
 
-ALTER TABLE Contractor
-ADD CONSTRAINT fkWorkerContractor
-FOREIGN KEY (ContractorNumber) REFERENCES Worker(WorkerNumber);
+ALTER TABLE Employee
+ADD CONSTRAINT fkPhysicalLocationEmployee
+FOREIGN KEY (PhysicalLocationId) REFERENCES LocationPhysical(PhysicalLocationId);
 
-ALTER TABLE WorkerSkill
-ADD CONSTRAINT fkWorkerWorkerSkill
-FOREIGN KEY (WorkerNumber) REFERENCES Worker(WorkerNumber);
+ALTER TABLE EmployeeSkill
+ADD CONSTRAINT fkEmployeeEmployeeSkill
+FOREIGN KEY (EmployeeNumber) REFERENCES Employee(EmployeeNumber);
 
-ALTER TABLE WorkerSkill
-ADD CONSTRAINT fkSkillWorkerSkill
+ALTER TABLE EmployeeSkill
+ADD CONSTRAINT fkSkillEmployeeSkill
 FOREIGN KEY (SkillCategoryId, SkillId) REFERENCES Skill(SkillCategoryId, SkillId);
 
--- ALTER TABLE WorkerSkill
--- ADD CONSTRAINT fkSkillCategoryWorkerSkill
+-- ALTER TABLE EmployeeSkill
+-- ADD CONSTRAINT fkSkillCategoryEmployeeSkill
 -- FOREIGN KEY (SkillCategoryId) REFERENCES SkillCategory(SkillCategoryId);
