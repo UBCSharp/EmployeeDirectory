@@ -90,7 +90,7 @@ CREATE TABLE Worker
         WorkCell                       VARCHAR(24),
         PhysicalLocationId             VARCHAR(20)   NOT NULL,
         PhotoUrl                       VARCHAR(255)
-CONSTRAINT pkWorker PRIMARY KEY
+CONSTRAINT pkEmployee PRIMARY KEY
     (
         WorkerNumber
     ));
@@ -121,7 +121,7 @@ CREATE TABLE Contractor
         EmploymentType                 VARCHAR(10),
         FirstContactDate               DATE,
         LastContactDate                DATE,
-CONSTRAINT pkContractor PRIMARY KEY
+CONSTRAINT pkEmployee PRIMARY KEY
     (
         ContractorNumber
     ));
